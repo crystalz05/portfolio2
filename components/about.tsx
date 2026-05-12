@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
 const stats = [
-  { label: 'Projects Completed', value: '15+' },
+  { label: 'Projects Completed', value: '5+' },
   { label: 'Tecnologies', value: '15+' },
   { label: 'Years Learning', value: '4+' },
   { label: 'GitHub Contributions', value: '500+' },
