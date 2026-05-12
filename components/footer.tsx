@@ -137,7 +137,7 @@ export function Footer() {
           className="flex flex-col md:flex-row items-center justify-between gap-4"
         >
           <p className="text-sm text-muted-foreground text-center md:text-left">
-            © {currentYear} Full-Stack Developer. Built with passion for clean code.
+            © {currentYear} Flutter Developer. Built with passion for clean code.
           </p>
           <div className="text-sm text-muted-foreground">
             Designed & Developed with <span className="text-white">Flutter</span> & <span className="text-white">Modern Web Tech</span>
