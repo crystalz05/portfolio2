@@ -1,8 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Github, ExternalLink, ImageIcon } from 'lucide-react'
+import { Github, ExternalLink, ImageIcon, ArrowUpRight } from 'lucide-react'
 import {
   Dialog,
   DialogContent,
@@ -17,13 +17,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
-import Image from 'next/image'
+import { SpotlightCard } from './spotlight-card'
+
+const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 const projects = [
   {
     id: 1,
     title: 'Expense Tracker App',
-    description: 'A comprehensive expense management application with offline-first architecture, real-time sync, and detailed analytics.',
+    badge: 'Personal Finance',
+    description:
+      'A comprehensive expense management application with offline-first architecture, real-time sync, and detailed analytics.',
     tags: ['Flutter', 'Supabase', 'Dart', 'Analytics'],
     features: ['Offline/Online Sync', 'Clean UI', 'Expense Analytics'],
     github: 'https://github.com/crystalz05/expense_tracker_flutter_app',
@@ -42,7 +46,9 @@ const projects = [
   {
     id: 2,
     title: 'CampusPay',
-    description: 'A comprehensive Flutter application for campus financial management, featuring wallet funding, P2P transfers, utility payments, and fee processing.',
+    badge: 'Fintech',
+    description:
+      'A comprehensive Flutter application for campus financial management, wallet funding, P2P transfers, utility payments, and fee processing.',
     tags: ['Flutter', 'Supabase', 'Clean Architecture', 'Dart'],
     features: ['Wallet System', 'P2P Transfers', 'Utility Payments'],
     github: 'https://github.com/crystalz05/campuspay',
@@ -64,7 +70,9 @@ const projects = [
   {
     id: 3,
     title: 'SabiStyle',
-    description: 'A premium eCommerce application built with Flutter. Offers a seamless shopping experience with elegant UI, smart search, and robust order management.',
+    badge: 'eCommerce',
+    description:
+      'A premium eCommerce app built with Flutter, seamless shopping experience, elegant UI, smart search, and robust order management.',
     tags: ['Flutter', 'Supabase', 'Dart', 'eCommerce'],
     features: ['Smart Search', 'Shopping Cart', 'Real-time Notifications'],
     github: 'https://github.com/crystalz05/sabistyle',
@@ -85,7 +93,9 @@ const projects = [
   {
     id: 4,
     title: 'Tyro Focus Timer',
-    description: 'A clean, production-grade productivity timer built with Flutter. Features automatic Pomodoro cycling, persistent session history, and weekly stats.',
+    badge: 'Productivity',
+    description:
+      'A clean, production-grade productivity timer built with Flutter. Automatic Pomodoro cycling, persistent session history, and weekly stats.',
     tags: ['Flutter', 'SQLite', 'Clean Architecture', 'Dart'],
     features: ['Pomodoro Cycle', 'Persistent History', 'Weekly Stats'],
     github: 'https://github.com/crystalz05/tyro-focus-timer',
@@ -101,186 +111,222 @@ const projects = [
   },
 ]
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
 }
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE_OUT } },
 }
 
 export function ProjectsSection() {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
     <section
       id="projects"
       ref={ref}
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-muted/20"
+      className="relative py-28 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: EASE_OUT }}
+          className="mb-14 text-center max-w-2xl mx-auto"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="glow-text">Featured</span>
-            <span className="text-white"> Projects</span>
+          <span className="section-label">Work</span>
+          <h2 className="text-4xl sm:text-5xl font-bold mt-4 tracking-tight text-balance">
+            <span className="text-white">Selected </span>
+            <span className="gradient-text">projects</span>
           </h2>
-          <div className="h-1 w-20 bg-white rounded-full" />
+          <p className="mt-5 text-muted-foreground leading-relaxed">
+            A few apps I&apos;ve designed and shipped, from indie tools to
+            production-grade fintech.
+          </p>
         </motion.div>
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6"
         >
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <motion.div
               key={project.id}
               variants={itemVariants}
-              className="group relative"
+              className="relative project-card group rounded-2xl"
             >
-                <div className="glass-effect rounded-xl border border-white/10 overflow-hidden hover:border-white/30 transition-all duration-300 p-6 h-full flex flex-col">
+              {/* White glow halo behind card */}
+              <div
+                aria-hidden
+                className="absolute -inset-px rounded-2xl pointer-events-none transition-opacity duration-500 opacity-40 group-hover:opacity-80"
+                style={{
+                  background:
+                    'radial-gradient(ellipse at center, rgba(255,255,255,0.18), rgba(255,255,255,0) 70%)',
+                  filter: 'blur(22px)',
+                }}
+              />
+
+              <SpotlightCard
+                className="relative p-7 h-full flex flex-col rounded-2xl border-white/10"
+              >
+                {/* White background wash */}
+                <div
+                  aria-hidden
+                  className="absolute inset-0 rounded-2xl pointer-events-none"
+                  style={{
+                    background:
+                      'linear-gradient(160deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 55%)',
+                  }}
+                />
+                {/* Top white stripe */}
+                <div
+                  aria-hidden
+                  className="absolute top-0 left-6 right-6 h-px pointer-events-none"
+                  style={{
+                    background:
+                      'linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)',
+                  }}
+                />
+
                 {/* Header */}
-                <div className="mb-4">
-                  <h3 className="text-2xl font-bold text-white mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {project.description}
-                  </p>
+                <div className="relative flex items-start justify-between gap-4 mb-4">
+                  <div>
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium mb-3 border border-cyan-400/30 bg-cyan-400/10 text-cyan-200">
+                      {project.badge}
+                    </span>
+                    <h3 className="text-2xl font-semibold text-white tracking-tight">
+                      {project.title}
+                    </h3>
+                  </div>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 inline-flex items-center justify-center h-10 w-10 rounded-full border border-white/20 bg-white/[0.08] text-white hover:bg-white/[0.14] hover:border-white/30 transition"
+                    aria-label="View code"
+                  >
+                    <ArrowUpRight size={18} />
+                  </a>
                 </div>
 
+                <p className="relative text-muted-foreground leading-relaxed mb-5">
+                  {project.description}
+                </p>
+
                 {/* Features */}
-                <div className="mb-4">
-                  <div className="flex flex-wrap gap-2">
-                    {project.features.map((feature) => (
-                        <span
-                          key={feature}
-                          className="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white/80"
-                        >
-                          {feature}
-                        </span>
-                    ))}
-                  </div>
+                <div className="relative mb-4 flex flex-wrap gap-2">
+                  {project.features.map((feature) => (
+                    <span
+                      key={feature}
+                      className="text-xs px-2.5 py-1 rounded-full border border-cyan-400/25 bg-cyan-400/[0.06] text-cyan-200/85"
+                    >
+                      {feature}
+                    </span>
+                  ))}
                 </div>
 
                 {/* Tech Stack */}
-                <div className="mb-6 flex-1">
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs px-2.5 py-1 rounded-full bg-white/10 border border-white/20 text-white/80"
-                        >
-                          {tag}
-                        </span>
-                    ))}
-                  </div>
+                <div className="relative mb-6 flex-1 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="chip">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
 
                 {/* Buttons */}
-                <div className="flex gap-4 mt-auto">
+                <div className="relative flex gap-3 mt-auto pt-4 border-t border-white/10">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold text-white bg-white/[0.08] border border-white/20 hover:bg-white/[0.14] hover:border-white/30 transition"
+                  >
+                    <Github size={16} />
+                    <span>Code</span>
+                  </a>
+                  {project.images ? (
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button
+                          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold text-background bg-gradient-to-r from-cyan-400 to-violet-500 hover:brightness-110 transition"
+                        >
+                          <ImageIcon size={16} />
+                          <span>Preview</span>
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-[95vw] lg:max-w-[90vw] xl:max-w-[85vw] h-[90vh] flex flex-col bg-background border border-white/10 p-0 overflow-hidden">
+                        <DialogTitle className="sr-only">
+                          {project.title} Preview
+                        </DialogTitle>
+                        <DialogDescription className="sr-only">
+                          Screenshots of the {project.title} project.
+                        </DialogDescription>
+                        <div className="p-2 sm:p-6 flex-1 min-h-0 flex items-center justify-center">
+                          <Carousel className="w-full h-full flex items-center">
+                            <CarouselContent className="h-full">
+                              {project.images.map((img, idx) => (
+                                <CarouselItem
+                                  key={idx}
+                                  className="h-full flex items-center justify-center"
+                                >
+                                  <div className="relative w-full h-full rounded-lg overflow-hidden flex items-center justify-center bg-black/50">
+                                    <img
+                                      src={img}
+                                      alt={`${project.title} screenshot ${idx + 1}`}
+                                      className="max-w-full max-h-[80vh] sm:max-h-[85vh] object-contain rounded-md p-2"
+                                    />
+                                  </div>
+                                </CarouselItem>
+                              ))}
+                            </CarouselContent>
+                            <div className="hidden sm:block">
+                              <CarouselPrevious className="left-4 bg-black/50 border-white/20 hover:bg-black/70" />
+                              <CarouselNext className="right-4 bg-black/50 border-white/20 hover:bg-black/70" />
+                            </div>
+                          </Carousel>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  ) : (
                     <a
-                      href={project.github}
+                      href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
+                      className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold text-background bg-gradient-to-r from-cyan-400 to-violet-500 hover:brightness-110 transition"
                     >
-                      <Github size={18} />
-                      <span>Code</span>
+                      <ExternalLink size={16} />
+                      <span>Preview</span>
                     </a>
-                    {project.images ? (
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors">
-                            <ImageIcon size={18} />
-                            <span>Preview</span>
-                          </button>
-                        </DialogTrigger>
-                        <DialogContent className="max-w-[95vw] lg:max-w-[90vw] xl:max-w-[85vw] h-[90vh] flex flex-col bg-background border border-white/10 p-0 overflow-hidden">
-                          <DialogTitle className="sr-only">
-                            {project.title} Preview
-                          </DialogTitle>
-                          <DialogDescription className="sr-only">
-                            Screenshots of the {project.title} project.
-                          </DialogDescription>
-                          <div className="p-2 sm:p-6 flex-1 min-h-0 flex items-center justify-center">
-                            <Carousel className="w-full h-full flex items-center">
-                              <CarouselContent className="h-full">
-                                {project.images.map((img, idx) => (
-                                  <CarouselItem key={idx} className="h-full flex items-center justify-center">
-                                    <div className="relative w-full h-full rounded-lg overflow-hidden flex items-center justify-center bg-black/50">
-                                      <img
-                                        src={img}
-                                        alt={`${project.title} screenshot ${idx + 1}`}
-                                        className="max-w-full max-h-[80vh] sm:max-h-[85vh] object-contain rounded-md p-2"
-                                      />
-                                    </div>
-                                  </CarouselItem>
-                                ))}
-                              </CarouselContent>
-                              <div className="hidden sm:block">
-                                <CarouselPrevious className="left-4 bg-black/50 border-white/20 hover:bg-black/70" />
-                                <CarouselNext className="right-4 bg-black/50 border-white/20 hover:bg-black/70" />
-                              </div>
-                            </Carousel>
-                          </div>
-                        </DialogContent>
-                      </Dialog>
-                    ) : (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
-                      >
-                        <ExternalLink size={18} />
-                        <span>Preview</span>
-                      </a>
-                    )}
+                  )}
                 </div>
-              </div>
-
-              {/* Animated border glow on hover */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0 bg-white/0 group-hover:bg-white/5 rounded-xl pointer-events-none"
-                />
+              </SpotlightCard>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* View All Projects CTA */}
+        {/* CTA */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ delay: 0.6 }}
-          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="mt-14 text-center"
         >
-          <button className="glow-button bg-white/10 border border-white/30 text-white hover:bg-white/20">
-            View All Projects
-          </button>
+          <a
+            href="https://github.com/crystalz05"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-ghost"
+          >
+            <Github size={16} />
+            <span>See more on GitHub</span>
+            <ArrowUpRight size={16} />
+          </a>
         </motion.div>
       </div>
     </section>

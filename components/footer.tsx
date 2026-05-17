@@ -1,12 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, ExternalLink, Twitter, MessageCircle } from 'lucide-react'
+import { Github, Linkedin, Mail, ExternalLink, Twitter, MessageCircle, Sparkles, ArrowUpRight } from 'lucide-react'
 
 const footerLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
+  { name: 'Process', href: '#process' },
   { name: 'Projects', href: '#projects' },
   { name: 'Contact', href: '#contact' },
 ]
@@ -19,130 +20,132 @@ const socialLinks = [
   { icon: MessageCircle, href: 'https://wa.me/2348132743494', label: 'WhatsApp' },
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
-
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-white/10 bg-gradient-to-t from-muted/20 to-transparent">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="relative border-t border-white/5 mt-10">
+      <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* CTA strip */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12"
+          transition={{ duration: 0.6 }}
+          className="glass-card p-8 sm:p-10 mb-14 text-center"
+        >
+          <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-balance">
+            <span className="text-white">Got a project in mind? </span>
+            <span className="gradient-text">Let&apos;s build it.</span>
+          </h3>
+          <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
+            From mobile app concepts to production-ready backends, I&apos;d love to help.
+          </p>
+          <a href="#contact" className="btn-primary mt-6">
+            <span>Start a conversation</span>
+            <ArrowUpRight size={16} />
+          </a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12"
         >
           {/* Brand */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="md:col-span-1"
-          >
-            <div className="text-lg font-bold text-white mb-2">
-              mikebuilds
+          <div className="md:col-span-1 col-span-2">
+            <div className="flex items-center gap-2 text-white font-semibold mb-3">
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500">
+                <Sparkles size={14} className="text-background" />
+              </span>
+              <span>mikebuilds</span>
             </div>
-            <p className="text-sm text-muted-foreground">
-              Building beautiful and functional digital experiences with clean code and attention to detail.
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Designing and shipping clean Flutter apps and modern backend systems.
             </p>
-          </motion.div>
+          </div>
 
-          {/* Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="md:col-span-1"
-          >
-            <h4 className="font-semibold text-white mb-4">Navigation</h4>
+          {/* Nav */}
+          <div>
+            <h4 className="font-semibold text-white mb-3 text-sm">Navigate</h4>
             <ul className="space-y-2">
               {footerLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-muted-foreground hover:text-white transition-colors"
+                    className="text-sm text-muted-foreground hover:text-cyan-300 transition-colors"
                   >
                     {link.name}
                   </a>
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Quick Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-1"
-          >
-            <h4 className="font-semibold text-white mb-4">Resources</h4>
+          {/* Resources */}
+          <div>
+            <h4 className="font-semibold text-white mb-3 text-sm">Resources</h4>
             <ul className="space-y-2">
               <li>
-                <a href="/resume/Michael_Resume_v2.pdf" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-white transition-colors flex items-center gap-1">
+                <a
+                  href="/resume/Michael_Resume_v2.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-cyan-300 transition-colors inline-flex items-center gap-1"
+                >
                   Resume <ExternalLink size={12} />
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://github.com/crystalz05"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-cyan-300 transition-colors inline-flex items-center gap-1"
+                >
+                  Open Source <ExternalLink size={12} />
+                </a>
+              </li>
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="md:col-span-1"
-          >
-            <h4 className="font-semibold text-white mb-4">Connect</h4>
-            <div className="flex gap-4">
+          {/* Social */}
+          <div>
+            <h4 className="font-semibold text-white mb-3 text-sm">Connect</h4>
+            <div className="flex flex-wrap gap-2">
               {socialLinks.map((social) => {
                 const Icon = social.icon
                 return (
-                  <motion.a
+                  <a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="p-2 rounded-lg border border-white/30 text-white hover:bg-white/10 transition-colors"
+                    className="icon-btn !w-10 !h-10"
                     title={social.label}
+                    aria-label={social.label}
                   >
-                    <Icon size={20} />
-                  </motion.a>
+                    <Icon size={16} />
+                  </a>
                 )
               })}
             </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Divider */}
-        <div className="border-t border-white/10 my-8" />
-
-        {/* Bottom */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col md:flex-row items-center justify-between gap-4"
-        >
-          <p className="text-sm text-muted-foreground text-center md:text-left">
-            © {currentYear} Flutter Developer. Built with passion for clean code.
-          </p>
-          <div className="text-sm text-muted-foreground">
-            Designed & Developed with <span className="text-white">Flutter</span> & <span className="text-white">Modern Web Tech</span>
           </div>
         </motion.div>
+
+        <div className="border-t border-white/5 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-muted-foreground text-center md:text-left">
+            © {currentYear} Paul Michael. Built with Next.js, Tailwind & Framer Motion.
+          </p>
+          <p className="text-xs text-muted-foreground inline-flex items-center gap-1.5">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            Currently available for work
+          </p>
+        </div>
       </div>
     </footer>
   )
