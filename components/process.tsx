@@ -58,7 +58,7 @@ export function ProcessSection() {
             <span className="gradient-text">turn ideas into apps</span>
           </h2>
           <p className="mt-5 text-muted-foreground leading-relaxed">
-            A simple, repeatable flow — no scope creep, no hidden surprises.
+            A simple, repeatable flow, no scope creep, no hidden surprises.
           </p>
         </motion.div>
 
