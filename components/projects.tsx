@@ -24,6 +24,24 @@ const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 const projects = [
   {
+    id: 'takturns',
+    badge: 'Web3 & Mobile',
+    title: 'TakTurns',
+    description: 'A Web3-powered decentralized rotational savings (ROSCA) app. Users can securely pool collateral and contribute to cycles using USDC/ERC20 tokens via trustless smart contracts.',
+    features: ['WalletConnect', 'Smart Contracts', 'DeFi Savings', 'ERC20 Transfers'],
+    tags: ['Flutter', 'Solidity', 'Web3', 'WalletConnect'],
+    github: 'https://github.com/crystalz05/takturns-flutter-app.git',
+    githubContract: 'https://github.com/crystalz05/takturns-contract.git',
+    images: [
+      'https://raw.githubusercontent.com/crystalz05/takturns-flutter-app/main/assets/screenshots/wallet_connection.jpg',
+      'https://raw.githubusercontent.com/crystalz05/takturns-flutter-app/main/assets/screenshots/home_dashboard.jpg',
+      'https://raw.githubusercontent.com/crystalz05/takturns-flutter-app/main/assets/screenshots/group_details.jpg',
+      'https://raw.githubusercontent.com/crystalz05/takturns-flutter-app/main/assets/screenshots/wallect_selection.jpg',
+      'https://raw.githubusercontent.com/crystalz05/takturns-flutter-app/main/assets/screenshots/create_group.jpg',
+      'https://raw.githubusercontent.com/crystalz05/takturns-flutter-app/main/assets/screenshots/join_group.jpg'
+    ],
+  },
+  {
     id: 1,
     title: 'Expense Tracker App',
     badge: 'Personal Finance',
@@ -241,24 +259,35 @@ export function ProjectsSection() {
                 </div>
 
                 {/* Buttons */}
-                <div className="relative flex gap-3 mt-auto pt-4 border-t border-white/10">
+                <div className="relative flex gap-2 mt-auto pt-4 border-t border-white/10">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold text-white bg-white/[0.08] border border-white/20 hover:bg-white/[0.14] hover:border-white/30 transition"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-2 sm:px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-white/[0.08] border border-white/20 hover:bg-white/[0.14] hover:border-white/30 transition"
                   >
-                    <Github size={16} />
-                    <span>Code</span>
+                    <Github size={16} className="hidden sm:block" />
+                    <span className="whitespace-nowrap">App</span>
                   </a>
+                  {project.githubContract && (
+                    <a
+                      href={project.githubContract}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-2 sm:px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white bg-white/[0.08] border border-white/20 hover:bg-white/[0.14] hover:border-white/30 transition"
+                    >
+                      <Github size={16} className="hidden sm:block" />
+                      <span className="whitespace-nowrap">Contract</span>
+                    </a>
+                  )}
                   {project.images ? (
                     <Dialog>
                       <DialogTrigger asChild>
                         <button
-                          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-semibold text-background bg-gradient-to-r from-cyan-400 to-violet-500 hover:brightness-110 transition"
+                          className="flex-1 inline-flex items-center justify-center gap-1.5 px-2 sm:px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-background bg-gradient-to-r from-cyan-400 to-violet-500 hover:brightness-110 transition"
                         >
-                          <ImageIcon size={16} />
-                          <span>Preview</span>
+                          <ImageIcon size={16} className="hidden sm:block" />
+                          <span className="whitespace-nowrap">Preview</span>
                         </button>
                       </DialogTrigger>
                       <DialogContent className="max-w-[95vw] lg:max-w-[90vw] xl:max-w-[85vw] h-[90vh] flex flex-col bg-background border border-white/10 p-0 overflow-hidden">

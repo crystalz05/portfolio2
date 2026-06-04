@@ -17,7 +17,7 @@ const socialLinks = [
   { icon: Linkedin, href: 'https://linkedin.com/in/mikebuilds', label: 'LinkedIn' },
   { icon: Twitter, href: 'https://twitter.com/mikebuilds_', label: 'Twitter' },
   { icon: Mail, href: 'mailto:mikecrystalz05@gmail.com', label: 'Email' },
-  { icon: MessageCircle, href: 'https://wa.me/2348132743494', label: 'WhatsApp' },
+  { icon: MessageCircle, href: 'https://wa.me/2348134502427', label: 'WhatsApp' },
 ]
 
 export function Footer() {
