@@ -19,21 +19,28 @@ export function Navbar() {
   const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 16)
-      const sections = navLinks.map((link) => link.href.substring(1))
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          if (rect.top <= 120) {
-            setActiveSection(section)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 16)
+          const sections = navLinks.map((link) => link.href.substring(1))
+          for (const section of sections) {
+            const element = document.getElementById(section)
+            if (element) {
+              const rect = element.getBoundingClientRect()
+              if (rect.top <= 120) {
+                setActiveSection(section)
+              }
+            }
           }
-        }
+          ticking = false
+        })
+        ticking = true
       }
     }
     handleScroll()
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -48,7 +55,7 @@ export function Navbar() {
         className={`w-full max-w-6xl transition-all duration-300 rounded-2xl border ${
           isScrolled
             ? 'bg-background/70 backdrop-blur-xl border-white/10 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.5)]'
-            : 'bg-transparent border-transparent'
+            : 'bg-background/70 md:bg-transparent backdrop-blur-xl md:backdrop-blur-none border-white/10 md:border-transparent shadow-[0_8px_30px_-12px_rgba(0,0,0,0.5)] md:shadow-none'
         }`}
       >
         <div className="flex items-center justify-between h-14 px-4 sm:px-6">

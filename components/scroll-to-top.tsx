@@ -8,9 +8,18 @@ export function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const toggle = () => setIsVisible(window.scrollY > 400)
+    let ticking = false
+    const toggle = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsVisible(window.scrollY > 400)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
     toggle()
-    window.addEventListener('scroll', toggle)
+    window.addEventListener('scroll', toggle, { passive: true })
     return () => window.removeEventListener('scroll', toggle)
   }, [])
 
