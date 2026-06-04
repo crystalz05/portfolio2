@@ -18,6 +18,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel'
 import { SpotlightCard } from './spotlight-card'
+import Image from 'next/image'
 
 const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
@@ -276,10 +277,12 @@ export function ProjectsSection() {
                                   className="h-full flex items-center justify-center"
                                 >
                                   <div className="relative w-full h-full rounded-lg overflow-hidden flex items-center justify-center bg-black/50">
-                                    <img
+                                    <Image
                                       src={img}
                                       alt={`${project.title} screenshot ${idx + 1}`}
-                                      className="max-w-full max-h-[80vh] sm:max-h-[85vh] object-contain rounded-md p-2"
+                                      width={1920}
+                                      height={1080}
+                                      className="w-auto h-auto max-w-full max-h-[80vh] sm:max-h-[85vh] object-contain rounded-md p-2 mx-auto"
                                     />
                                   </div>
                                 </CarouselItem>
