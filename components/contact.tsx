@@ -8,7 +8,7 @@ import { SpotlightCard } from './spotlight-card'
 
 const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
-const contactInfo = [
+export const contactInfo = [
   {
     icon: Mail,
     label: 'Email',

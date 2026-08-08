@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, ExternalLink, Twitter, MessageCircle, Sparkles, ArrowUpRight } from 'lucide-react'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { contactInfo } from './contact'
 
 const footerLinks = [
   { name: 'Home', href: '#home' },
@@ -43,10 +45,42 @@ export function Footer() {
           <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
             From mobile app concepts to production-ready backends, I&apos;d love to help.
           </p>
-          <a href="#contact" className="btn-primary mt-6">
-            <span>Start a conversation</span>
-            <ArrowUpRight size={16} />
-          </a>
+          <Dialog>
+            <DialogTrigger asChild>
+              <button className="btn-primary mt-6">
+                <span>Start a conversation</span>
+                <ArrowUpRight size={16} />
+              </button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md glass-card border-[var(--brand-sky)]/30">
+              <DialogHeader>
+                <DialogTitle>Let&apos;s talk</DialogTitle>
+              </DialogHeader>
+              <div className="grid grid-cols-1 gap-3 py-4">
+                {contactInfo.map((info) => {
+                  const Icon = info.icon
+                  return (
+                    <a
+                      key={info.label}
+                      href={info.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-4 p-4 rounded-xl border border-[var(--brand-sky)]/15 bg-background/50 hover:bg-[var(--brand-sky)]/10 hover:border-[var(--brand-sky)]/30 transition-all"
+                    >
+                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--brand-sky)]/10 text-accent-ink">
+                        <Icon size={18} />
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-sm font-medium text-foreground">{info.label}</div>
+                        <div className="text-xs text-muted-foreground">{info.value}</div>
+                      </div>
+                      <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-accent-ink transition-colors" />
+                    </a>
+                  )
+                })}
+              </div>
+            </DialogContent>
+          </Dialog>
         </motion.div>
 
         <motion.div
@@ -98,14 +132,6 @@ export function Footer() {
                   className="text-sm text-muted-foreground hover:text-accent-ink transition-colors inline-flex items-center gap-1"
                 >
                   Resume <ExternalLink size={12} />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#projects"
-                  className="text-sm text-muted-foreground hover:text-accent-ink transition-colors inline-flex items-center gap-1"
-                >
-                  Open Source <ExternalLink size={12} />
                 </a>
               </li>
             </ul>

@@ -18,12 +18,12 @@ const skillCategories = [
   {
     title: 'Frontend',
     icon: Smartphone,
-    skills: ['Flutter', 'Dart', 'Jetpack Compose', 'React', 'Tailwind CSS'],
+    skills: ['Flutter', 'Dart', 'Next.js', 'Vite.js', 'React', 'Tailwind CSS'],
   },
   {
     title: 'Backend',
     icon: Server,
-    skills: ['FastAPI', 'Spring Boot', 'Firebase', 'Supabase'],
+    skills: ['Laravel', 'PHP', 'Firebase', 'Supabase'],
   },
   {
     title: 'Database',
@@ -48,9 +48,9 @@ const skillCategories = [
 ]
 
 const marqueeTags = [
-  'Flutter', 'Dart', 'FastAPI', 'Spring Boot', 'PostgreSQL', 'Firebase',
-  'Supabase', 'React', 'Next.js', 'TypeScript', 'Docker', 'Linux',
-  'Jetpack Compose', 'REST API', 'Tailwind', 'Git',
+  'Flutter', 'Dart', 'Laravel', 'PHP', 'PostgreSQL', 'Firebase',
+  'Supabase', 'React', 'Next.js', 'Vite.js', 'TypeScript', 'Docker', 'Linux',
+  'REST API', 'Tailwind', 'Git',
 ]
 
 const containerVariants: Variants = {

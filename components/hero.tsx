@@ -90,7 +90,7 @@ export function HeroSection() {
           className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-[1.05] tracking-tight text-balance"
         >
           <span className="block text-foreground">I&apos;m Paul Michael,</span>
-          <span className="block gradient-text">a Flutter Developer</span>
+          <span className="block gradient-text">a Mobile Engineer</span>
         </motion.h1>
 
         {/* Subtitle */}

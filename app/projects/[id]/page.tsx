@@ -104,17 +104,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
               <span>Contract Code</span>
             </a>
           )}
-          {project.demo && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-[var(--brand-sky-text)] bg-[var(--brand-sky)] hover:brightness-110 transition"
-            >
-              <ExternalLink size={18} />
-              <span>Live Demo</span>
-            </a>
-          )}
+
         </div>
 
         {/* Screenshots Component with Controls & Large Scrollbar */}
