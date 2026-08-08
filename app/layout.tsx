@@ -19,10 +19,6 @@ export const metadata: Metadata = {
     description: 'Scalable mobile apps and modern backend systems',
     type: 'website',
   },
-  icons: {
-    icon: '/pm-icon.svg',
-    apple: '/pm-icon.svg',
-  },
 }
 
 export const viewport: Viewport = {

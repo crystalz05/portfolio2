@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Sparkles } from 'lucide-react'
+import Image from 'next/image'
 import { ThemeToggle } from './theme-toggle'
 
 const navLinks = [
@@ -62,9 +63,8 @@ export function Navbar() {
         <div className="flex items-center justify-between h-14 px-4 sm:px-6">
           {/* Logo */}
           <a href="/#home" className="flex items-center gap-2 text-foreground font-semibold">
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[var(--brand-sky)]">
-              <Sparkles size={14} className="text-white" />
-            </span>
+            <Image src="/logo-dark.png" alt="mikebuilds logo" width={28} height={28} className="w-7 h-7 object-contain dark:hidden" />
+            <Image src="/logo-light.png" alt="mikebuilds logo" width={28} height={28} className="w-7 h-7 object-contain hidden dark:block" />
             <span>mikebuilds</span>
           </a>
 

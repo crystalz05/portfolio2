@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, ExternalLink, Twitter, MessageCircle, Sparkles, ArrowUpRight } from 'lucide-react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import Image from 'next/image'
 import { contactInfo } from './contact'
 
 const footerLinks = [
@@ -93,9 +94,8 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-1 col-span-2">
             <div className="flex items-center gap-2 text-foreground font-semibold mb-3">
-              <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[var(--brand-sky)]">
-                <Sparkles size={14} className="text-white" />
-              </span>
+              <Image src="/logo-dark.png" alt="mikebuilds logo" width={28} height={28} className="w-7 h-7 object-contain dark:hidden" />
+              <Image src="/logo-light.png" alt="mikebuilds logo" width={28} height={28} className="w-7 h-7 object-contain hidden dark:block" />
               <span>mikebuilds</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
