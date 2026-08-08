@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Sparkles } from 'lucide-react'
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Process', href: '#process' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/#home' },
+  { name: 'About', href: '/#about' },
+  { name: 'Skills', href: '/#skills' },
+  { name: 'Process', href: '/#process' },
+  { name: 'Projects', href: '/#projects' },
+  { name: 'Contact', href: '/#contact' },
 ]
 
 export function Navbar() {
@@ -60,8 +60,8 @@ export function Navbar() {
       >
         <div className="flex items-center justify-between h-14 px-4 sm:px-6">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2 text-white font-semibold">
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500">
+          <a href="/#home" className="flex items-center gap-2 text-white font-semibold">
+            <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[#7BAFD4]">
               <Sparkles size={14} className="text-background" />
             </span>
             <span>mikebuilds</span>
@@ -95,8 +95,8 @@ export function Navbar() {
 
           {/* CTA */}
           <a
-            href="#contact"
-            className="hidden md:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-semibold text-background bg-gradient-to-r from-cyan-400 to-violet-500 hover:brightness-110 transition"
+            href="/#contact"
+            className="hidden md:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-semibold text-[#07090F] bg-[#7BAFD4] hover:brightness-110 transition"
           >
             Hire Me
           </a>
@@ -133,9 +133,9 @@ export function Navbar() {
                   </a>
                 ))}
                 <a
-                  href="#contact"
+                  href="/#contact"
                   onClick={() => setIsOpen(false)}
-                  className="mt-2 px-3 py-2.5 rounded-lg text-sm font-semibold text-background bg-gradient-to-r from-cyan-400 to-violet-500 text-center"
+                  className="mt-2 px-3 py-2.5 rounded-lg text-sm font-semibold text-[#07090F] bg-[#7BAFD4] text-center"
                 >
                   Hire Me
                 </a>

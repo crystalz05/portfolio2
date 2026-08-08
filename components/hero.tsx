@@ -43,12 +43,12 @@ export function HeroSection() {
         <motion.div
           animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
           transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-          className="orb top-10 -left-20 w-[26rem] h-[26rem] bg-cyan-500/15"
+          className="orb top-10 -left-20 w-[26rem] h-[26rem] bg-[#7BAFD4]/10"
         />
         <motion.div
           animate={{ x: [0, -25, 0], y: [0, 30, 0] }}
           transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
-          className="orb bottom-0 -right-20 w-[30rem] h-[30rem] bg-violet-500/15"
+          className="orb bottom-0 -right-20 w-[30rem] h-[30rem] bg-[#5A8FAD]/10"
         />
         <motion.div
           animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.6, 0.4] }}

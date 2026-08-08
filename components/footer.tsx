@@ -25,7 +25,7 @@ export function Footer() {
 
   return (
     <footer className="relative border-t border-white/5 mt-10">
-      <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
+      <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-[#7BAFD4]/30 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* CTA strip */}
@@ -59,7 +59,7 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-1 col-span-2">
             <div className="flex items-center gap-2 text-white font-semibold mb-3">
-              <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500">
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[#7BAFD4]">
                 <Sparkles size={14} className="text-background" />
               </span>
               <span>mikebuilds</span>
@@ -77,7 +77,7 @@ export function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-muted-foreground hover:text-cyan-300 transition-colors"
+                    className="text-sm text-muted-foreground hover:text-[#7BAFD4] transition-colors"
                   >
                     {link.name}
                   </a>
@@ -95,17 +95,15 @@ export function Footer() {
                   href="/resume/Michael_Resume_v2.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-cyan-300 transition-colors inline-flex items-center gap-1"
+                  className="text-sm text-muted-foreground hover:text-[#7BAFD4] transition-colors inline-flex items-center gap-1"
                 >
                   Resume <ExternalLink size={12} />
                 </a>
               </li>
               <li>
                 <a
-                  href="https://github.com/crystalz05"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-cyan-300 transition-colors inline-flex items-center gap-1"
+                  href="#projects"
+                  className="text-sm text-muted-foreground hover:text-[#7BAFD4] transition-colors inline-flex items-center gap-1"
                 >
                   Open Source <ExternalLink size={12} />
                 </a>
@@ -142,7 +140,7 @@ export function Footer() {
             © {currentYear} Paul Michael. Built with Next.js, Tailwind & Framer Motion.
           </p>
           <p className="text-xs text-muted-foreground inline-flex items-center gap-1.5">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#7BAFD4] animate-pulse" />
             Currently available for work
           </p>
         </div>

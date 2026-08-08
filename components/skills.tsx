@@ -117,8 +117,8 @@ export function SkillsSection() {
               <motion.div key={category.title} variants={itemVariants}>
                 <SpotlightCard className="p-6 h-full">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/15 to-violet-500/15 border border-white/10">
-                      <Icon className="text-cyan-300" size={18} />
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[#7BAFD4]/10 border border-[#7BAFD4]/12">
+                      <Icon className="text-[#7BAFD4]" size={18} />
                     </div>
                     <h3 className="text-lg font-semibold text-white">
                       {category.title}

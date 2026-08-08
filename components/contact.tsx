@@ -114,8 +114,8 @@ export function ContactSection() {
                   className="group block"
                 >
                   <SpotlightCard className="p-5 flex items-center gap-4 transition-transform group-hover:-translate-y-0.5">
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-500/20 border border-white/10">
-                      <Icon className="text-cyan-300" size={18} />
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#7BAFD4]/10 border border-[#7BAFD4]/15">
+                      <Icon className="text-[#7BAFD4]" size={18} />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="text-xs uppercase tracking-wider text-muted-foreground">
@@ -126,7 +126,7 @@ export function ContactSection() {
                       </div>
                     </div>
                     <ArrowUpRight
-                      className="text-muted-foreground group-hover:text-cyan-300 transition-colors shrink-0"
+                      className="text-muted-foreground group-hover:text-[#7BAFD4] transition-colors shrink-0"
                       size={18}
                     />
                   </SpotlightCard>
@@ -155,7 +155,7 @@ export function ContactSection() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/10 text-white placeholder:text-muted-foreground focus:outline-none focus:border-cyan-400/40 focus:bg-white/[0.04] transition"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/10 text-white placeholder:text-muted-foreground focus:outline-none focus:border-[#7BAFD4]/40 focus:bg-white/[0.04] transition"
                       placeholder="Jane Doe"
                     />
                   </div>
@@ -169,7 +169,7 @@ export function ContactSection() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/10 text-white placeholder:text-muted-foreground focus:outline-none focus:border-cyan-400/40 focus:bg-white/[0.04] transition"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/10 text-white placeholder:text-muted-foreground focus:outline-none focus:border-[#7BAFD4]/40 focus:bg-white/[0.04] transition"
                       placeholder="jane@example.com"
                     />
                   </div>
@@ -185,7 +185,7 @@ export function ContactSection() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/10 text-white placeholder:text-muted-foreground focus:outline-none focus:border-cyan-400/40 focus:bg-white/[0.04] transition resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/10 text-white placeholder:text-muted-foreground focus:outline-none focus:border-[#7BAFD4]/40 focus:bg-white/[0.04] transition resize-none"
                     placeholder="Tell me about the project, timeline, and what success looks like..."
                   />
                 </div>

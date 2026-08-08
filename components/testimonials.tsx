@@ -73,7 +73,7 @@ export function TestimonialsSection() {
             <span className="text-white">What Clients</span>
             <span className="glow-text"> Say</span>
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mx-auto" />
+          <div className="h-1 w-20 bg-[#7BAFD4]/50 rounded-full mx-auto" />
         </motion.div>
 
         <motion.div
@@ -89,7 +89,7 @@ export function TestimonialsSection() {
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
               className="group relative"
             >
-              <div className="glass-effect rounded-xl border border-white/10 p-8 h-full hover:border-cyan-400/50 transition-all duration-300 flex flex-col">
+              <div className="glass-effect rounded-xl border border-white/10 p-8 h-full hover:border-[#7BAFD4]/40 transition-all duration-300 flex flex-col">
                 {/* Testimonial content */}
                 <div className="flex-1 mb-6">
                   {/* Stars */}
@@ -136,7 +136,7 @@ export function TestimonialsSection() {
                 initial={{ opacity: 0 }}
                 whileHover={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-gradient-to-br from-cyan-400/0 to-purple-500/0 group-hover:from-cyan-400/10 group-hover:to-purple-500/10 rounded-xl pointer-events-none"
+                className="absolute inset-0 group-hover:bg-[#7BAFD4]/08 rounded-xl pointer-events-none"
               />
             </motion.div>
           ))}

@@ -137,8 +137,8 @@ export function AboutSection() {
               const Icon = item.icon
               return (
                 <SpotlightCard key={item.title} className="p-6">
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-500/20 border border-white/10 mb-4">
-                    <Icon className="text-cyan-300" size={18} />
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[#7BAFD4]/10 border border-[#7BAFD4]/15 mb-4">
+                    <Icon className="text-[#7BAFD4]" size={18} />
                   </div>
                   <h4 className="text-white font-semibold mb-1.5">
                     {item.title}

@@ -81,8 +81,8 @@ export function ProcessSection() {
                 <SpotlightCard className="p-6 h-full">
                   {/* Number badge */}
                   <div className="flex items-center justify-between mb-5">
-                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-violet-500/20 border border-white/10">
-                      <Icon className="text-cyan-300" size={18} />
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[#7BAFD4]/10 border border-[#7BAFD4]/15">
+                      <Icon className="text-[#7BAFD4]" size={18} />
                     </div>
                     <span className="text-xs font-mono text-muted-foreground">
                       0{i + 1}
