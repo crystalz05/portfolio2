@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Sparkles } from 'lucide-react'
+import { ThemeToggle } from './theme-toggle'
 
 const navLinks = [
   { name: 'Home', href: '/#home' },
@@ -54,15 +55,15 @@ export function Navbar() {
       <div
         className={`w-full max-w-6xl transition-all duration-300 rounded-2xl border ${
           isScrolled
-            ? 'bg-background/70 backdrop-blur-xl border-white/10 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.5)]'
-            : 'bg-background/70 md:bg-transparent backdrop-blur-xl md:backdrop-blur-none border-white/10 md:border-transparent shadow-[0_8px_30px_-12px_rgba(0,0,0,0.5)] md:shadow-none'
+            ? 'bg-background/70 backdrop-blur-xl border-foreground/10 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.5)]'
+            : 'bg-background/70 md:bg-transparent backdrop-blur-xl md:backdrop-blur-none border-foreground/10 md:border-transparent shadow-[0_8px_30px_-12px_rgba(0,0,0,0.5)] md:shadow-none'
         }`}
       >
         <div className="flex items-center justify-between h-14 px-4 sm:px-6">
           {/* Logo */}
-          <a href="/#home" className="flex items-center gap-2 text-white font-semibold">
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[#7BAFD4]">
-              <Sparkles size={14} className="text-background" />
+          <a href="/#home" className="flex items-center gap-2 text-foreground font-semibold">
+            <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[var(--brand-sky)]">
+              <Sparkles size={14} className="text-white" />
             </span>
             <span>mikebuilds</span>
           </a>
@@ -77,13 +78,13 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={`relative px-3 py-2 text-sm font-medium rounded-full transition-colors ${
-                    isActive ? 'text-white' : 'text-muted-foreground hover:text-white'
+                    isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
                   {isActive && (
                     <motion.span
                       layoutId="nav-pill"
-                      className="absolute inset-0 rounded-full bg-white/[0.07] border border-white/10"
+                      className="absolute inset-0 rounded-full bg-foreground/[0.07] border border-foreground/10"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -96,15 +97,17 @@ export function Navbar() {
           {/* CTA */}
           <a
             href="/#contact"
-            className="hidden md:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-semibold text-[#07090F] bg-[#7BAFD4] hover:brightness-110 transition"
+            className="hidden md:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-semibold text-[var(--brand-sky-text)] bg-[var(--brand-sky)] hover:brightness-110 transition"
           >
             Hire Me
           </a>
 
+          <ThemeToggle className="!w-9 !h-9 ml-2" />
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white p-2 -mr-2"
+            className="md:hidden text-foreground p-2 -mr-2 ml-1"
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={22} /> : <Menu size={22} />}
@@ -127,7 +130,7 @@ export function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="px-3 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-white hover:bg-white/[0.04] transition-colors"
+                    className="px-3 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-foreground/[0.04] transition-colors"
                   >
                     {link.name}
                   </a>
@@ -135,7 +138,7 @@ export function Navbar() {
                 <a
                   href="/#contact"
                   onClick={() => setIsOpen(false)}
-                  className="mt-2 px-3 py-2.5 rounded-lg text-sm font-semibold text-[#07090F] bg-[#7BAFD4] text-center"
+                  className="mt-2 px-3 py-2.5 rounded-lg text-sm font-semibold text-[var(--brand-sky-text)] bg-[var(--brand-sky)] text-center"
                 >
                   Hire Me
                 </a>

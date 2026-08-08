@@ -74,7 +74,7 @@ export function TimelineSection() {
             <span className="text-white">My</span>
             <span className="glow-text"> Journey</span>
           </h2>
-          <div className="h-1 w-20 bg-[#7BAFD4]/50 rounded-full" />
+          <div className="h-1 w-20 bg-[var(--brand-sky)]/50 rounded-full" />
         </motion.div>
 
         <motion.div
@@ -84,7 +84,7 @@ export function TimelineSection() {
           className="relative"
         >
           {/* Timeline line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-[#7BAFD4]/30 md:translate-x-1/2" />
+          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-1 bg-[var(--brand-sky)]/30 md:translate-x-1/2" />
 
           {/* Timeline events */}
           <div className="space-y-12">
@@ -100,7 +100,7 @@ export function TimelineSection() {
                 <div className="md:w-1/2 pl-12 md:pl-0">
                   <motion.div
                     whileHover={{ y: -5 }}
-                    className="glass-effect rounded-lg border border-white/10 p-6 hover:border-[#7BAFD4]/40 transition-colors"
+                    className="glass-effect rounded-lg border border-white/10 p-6 hover:border-[var(--brand-sky)]/40 transition-colors"
                   >
                     <div className="mb-3">
                       <span className="text-3xl">{event.icon}</span>
@@ -119,12 +119,12 @@ export function TimelineSection() {
                   initial={{ scale: 0 }}
                   animate={inView ? { scale: 1 } : { scale: 0 }}
                   transition={{ delay: index * 0.2 + 0.3 }}
-                  className="absolute left-0 md:left-1/2 top-6 w-6 h-6 bg-[#7BAFD4] rounded-full border-4 border-background md:translate-x--3 z-10"
+                  className="absolute left-0 md:left-1/2 top-6 w-6 h-6 bg-[var(--brand-sky)] rounded-full border-4 border-background md:translate-x--3 z-10"
                 >
                   <motion.div
                     animate={{ scale: [1, 1.3, 1] }}
                     transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
-                    className="absolute inset-0 rounded-full border-2 border-[#7BAFD4]"
+                    className="absolute inset-0 rounded-full border-2 border-[var(--brand-sky)]"
                   />
                 </motion.div>
 
@@ -136,7 +136,7 @@ export function TimelineSection() {
                   className="hidden md:flex md:w-1/2 md:items-start justify-center md:pt-2"
                 >
                   <div className="text-center">
-                    <span className="inline-block px-4 py-2 rounded-full bg-[#7BAFD4]/15 border border-[#7BAFD4]/30 text-[#A8C8DC] font-bold text-lg">
+                    <span className="inline-block px-4 py-2 rounded-full bg-[var(--brand-sky)]/15 border border-[var(--brand-sky)]/30 text-[var(--brand-sky)] font-bold text-lg">
                       {event.year}
                     </span>
                   </div>
@@ -144,7 +144,7 @@ export function TimelineSection() {
 
                 {/* Year badge mobile */}
                 <div className="md:hidden mb-4">
-                  <span className="inline-block px-3 py-1 rounded-full bg-[#7BAFD4]/15 border border-[#7BAFD4]/30 text-[#A8C8DC] font-bold text-sm">
+                  <span className="inline-block px-3 py-1 rounded-full bg-[var(--brand-sky)]/15 border border-[var(--brand-sky)]/30 text-[var(--brand-sky)] font-bold text-sm">
                     {event.year}
                   </span>
                 </div>

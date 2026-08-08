@@ -67,7 +67,7 @@ export function AboutSection() {
         >
           <span className="section-label mb-4">About</span>
           <h2 className="text-4xl sm:text-5xl font-bold mt-4 tracking-tight text-balance">
-            <span className="text-white">A developer obsessed with </span>
+            <span className="text-foreground">A developer obsessed with </span>
             <span className="gradient-text">clean, shippable code</span>
           </h2>
           <p className="mt-5 text-muted-foreground leading-relaxed">
@@ -115,7 +115,7 @@ export function AboutSection() {
                   Open to work
                 </span>
               </div>
-              <h3 className="text-2xl font-semibold text-white mb-3">
+              <h3 className="text-2xl font-semibold text-foreground mb-3">
                 Who I am
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-3">
@@ -137,10 +137,10 @@ export function AboutSection() {
               const Icon = item.icon
               return (
                 <SpotlightCard key={item.title} className="p-6">
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[#7BAFD4]/10 border border-[#7BAFD4]/15 mb-4">
-                    <Icon className="text-[#7BAFD4]" size={18} />
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--brand-sky)]/10 border border-[var(--brand-sky)]/15 mb-4">
+                    <Icon className="text-accent-ink" size={18} />
                   </div>
-                  <h4 className="text-white font-semibold mb-1.5">
+                  <h4 className="text-foreground font-semibold mb-1.5">
                     {item.title}
                   </h4>
                   <p className="text-sm text-muted-foreground leading-relaxed">

@@ -29,17 +29,17 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
       <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-white transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
         >
           <ArrowLeft size={16} />
           <span>Back to Projects</span>
         </Link>
 
         <div className="mb-8">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 border border-[#7BAFD4]/25 bg-[#7BAFD4]/08 text-[#A8C8DC]">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 border border-[var(--brand-sky)]/25 bg-[var(--brand-sky)]/08 text-accent-ink">
             {project.badge}
           </span>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-6">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground mb-6">
             {project.title}
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
@@ -71,7 +71,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
               {project.features.map((feature) => (
                 <span
                   key={feature}
-                  className="text-sm px-3 py-1.5 rounded-full border border-[#7BAFD4]/20 bg-[#7BAFD4]/[0.06] text-[#A8C8DC]/85"
+                  className="text-sm px-3 py-1.5 rounded-full border border-[var(--brand-sky)]/20 bg-[var(--brand-sky)]/[0.06] text-accent-ink/85"
                 >
                   {feature}
                 </span>
@@ -81,13 +81,13 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap gap-4 mb-16 pt-8 border-t border-white/10">
+        <div className="flex flex-wrap gap-4 mb-16 pt-8 border-t border-foreground/10">
           {project.github && (
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-white bg-white/[0.08] border border-white/20 hover:bg-white/[0.14] hover:border-white/30 transition"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-foreground bg-foreground/[0.08] border border-foreground/20 hover:bg-foreground/[0.14] hover:border-foreground/30 transition"
             >
               <Github size={18} />
               <span>App Code</span>
@@ -98,7 +98,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
               href={project.githubContract}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-white bg-white/[0.08] border border-white/20 hover:bg-white/[0.14] hover:border-white/30 transition"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-foreground bg-foreground/[0.08] border border-foreground/20 hover:bg-foreground/[0.14] hover:border-foreground/30 transition"
             >
               <Github size={18} />
               <span>Contract Code</span>
@@ -109,7 +109,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-background bg-[#7BAFD4] hover:brightness-110 transition"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-[var(--brand-sky-text)] bg-[var(--brand-sky)] hover:brightness-110 transition"
             >
               <ExternalLink size={18} />
               <span>Live Demo</span>

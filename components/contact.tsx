@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion, type Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Mail, Linkedin, Send, MessageCircle, ArrowUpRight, Github as GithubIcon } from 'lucide-react'
+import { Mail, Linkedin, Send, MessageCircle, ArrowUpRight, Github as GithubIcon, Twitter } from 'lucide-react'
 import { SpotlightCard } from './spotlight-card'
 
 const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1]
@@ -32,6 +32,12 @@ const contactInfo = [
     label: 'WhatsApp',
     value: '+234 813 450 2427',
     href: 'https://wa.me/2348134502427',
+  },
+  {
+    icon: Twitter,
+    label: 'X (Twitter)',
+    value: '@mikebuilds_',
+    href: 'https://x.com/mikebuilds_',
   },
 ]
 
@@ -85,7 +91,7 @@ export function ContactSection() {
         >
           <span className="section-label">Contact</span>
           <h2 className="text-4xl sm:text-5xl font-bold mt-4 tracking-tight text-balance">
-            <span className="text-white">Let&apos;s build </span>
+            <span className="text-foreground">Let&apos;s build </span>
             <span className="gradient-text">something good</span>
           </h2>
           <p className="mt-5 text-muted-foreground leading-relaxed">
@@ -94,7 +100,7 @@ export function ContactSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:items-stretch">
           {/* Contact info column */}
           <motion.div
             variants={containerVariants}
@@ -114,19 +120,19 @@ export function ContactSection() {
                   className="group block"
                 >
                   <SpotlightCard className="p-5 flex items-center gap-4 transition-transform group-hover:-translate-y-0.5">
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#7BAFD4]/10 border border-[#7BAFD4]/15">
-                      <Icon className="text-[#7BAFD4]" size={18} />
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--brand-sky)]/10 border border-[var(--brand-sky)]/15">
+                      <Icon className="text-accent-ink" size={18} />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="text-xs uppercase tracking-wider text-muted-foreground">
                         {info.label}
                       </div>
-                      <div className="text-white text-sm truncate">
+                      <div className="text-foreground text-sm truncate">
                         {info.value}
                       </div>
                     </div>
                     <ArrowUpRight
-                      className="text-muted-foreground group-hover:text-[#7BAFD4] transition-colors shrink-0"
+                      className="text-muted-foreground group-hover:text-accent-ink transition-colors shrink-0"
                       size={18}
                     />
                   </SpotlightCard>
@@ -140,10 +146,10 @@ export function ContactSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: EASE_OUT, delay: 0.15 }}
-            className="lg:col-span-3"
+            className="lg:col-span-3 flex flex-col"
           >
-            <SpotlightCard className="p-7">
-              <form onSubmit={handleSubmit} className="space-y-5">
+            <SpotlightCard className="p-7 flex flex-col flex-1">
+              <form onSubmit={handleSubmit} className="flex flex-col flex-1 gap-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs uppercase tracking-wider text-muted-foreground mb-2">
@@ -155,7 +161,7 @@ export function ContactSection() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/10 text-white placeholder:text-muted-foreground focus:outline-none focus:border-[#7BAFD4]/40 focus:bg-white/[0.04] transition"
+                      className="w-full px-4 py-3 rounded-xl bg-foreground/[0.02] border border-foreground/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-[var(--brand-sky)]/40 focus:bg-foreground/[0.04] transition"
                       placeholder="Jane Doe"
                     />
                   </div>
@@ -169,13 +175,13 @@ export function ContactSection() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/10 text-white placeholder:text-muted-foreground focus:outline-none focus:border-[#7BAFD4]/40 focus:bg-white/[0.04] transition"
+                      className="w-full px-4 py-3 rounded-xl bg-foreground/[0.02] border border-foreground/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-[var(--brand-sky)]/40 focus:bg-foreground/[0.04] transition"
                       placeholder="jane@example.com"
                     />
                   </div>
                 </div>
 
-                <div>
+                <div className="flex flex-col flex-1">
                   <label className="block text-xs uppercase tracking-wider text-muted-foreground mb-2">
                     Message
                   </label>
@@ -184,8 +190,7 @@ export function ContactSection() {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={6}
-                    className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/10 text-white placeholder:text-muted-foreground focus:outline-none focus:border-[#7BAFD4]/40 focus:bg-white/[0.04] transition resize-none"
+                    className="flex-1 w-full px-4 py-3 rounded-xl bg-foreground/[0.02] border border-foreground/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-[var(--brand-sky)]/40 focus:bg-foreground/[0.04] transition resize-none min-h-[120px]"
                     placeholder="Tell me about the project, timeline, and what success looks like..."
                   />
                 </div>
@@ -201,7 +206,7 @@ export function ContactSection() {
                       <motion.div
                         animate={{ rotate: 360 }}
                         transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                        className="w-4 h-4 border-2 border-background/40 border-t-background rounded-full"
+                        className="w-4 h-4 border-2 border-[#07090F]/40 border-t-[#07090F] rounded-full"
                       />
                       <span>Sending...</span>
                     </>

@@ -43,7 +43,7 @@ export function HeroSection() {
         <motion.div
           animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
           transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-          className="orb top-10 -left-20 w-[26rem] h-[26rem] bg-[#7BAFD4]/10"
+          className="orb top-10 -left-20 w-[26rem] h-[26rem] bg-[var(--brand-sky)]/10"
         />
         <motion.div
           animate={{ x: [0, -25, 0], y: [0, 30, 0] }}
@@ -73,7 +73,7 @@ export function HeroSection() {
 
         {/* Profile Image */}
         <motion.div variants={itemVariants} className="mb-8 flex justify-center">
-          <div className="ring-glow relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border border-white/10">
+          <div className="ring-glow relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border border-foreground/10">
             <Image
               src="/profile.jpg"
               alt="Paul Michael"
@@ -89,7 +89,7 @@ export function HeroSection() {
           variants={itemVariants}
           className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-[1.05] tracking-tight text-balance"
         >
-          <span className="block text-white">I&apos;m Paul Michael,</span>
+          <span className="block text-foreground">I&apos;m Paul Michael,</span>
           <span className="block gradient-text">a Flutter Developer</span>
         </motion.h1>
 
@@ -139,7 +139,7 @@ export function HeroSection() {
                   {s.label}
                 </div>
               </div>
-              {i < stats.length - 1 && <div className="h-8 w-px bg-white/10" />}
+              {i < stats.length - 1 && <div className="h-8 w-px bg-foreground/10" />}
             </div>
           ))}
         </motion.div>
